@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Driving Feed Prototype</title>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="read-spreadsheet.js"></script>
+	<style type="text/css">
+		body{
+			margin: 0;
+		}
+		div{
+			position: relative;
+		}
+		.divider{
+			width: 100vw;
+		}
+		.header{
+			position: fixed;
+			width: 100vw;
+			top: 0;
+			left: 0;
+		}
+		.container{
+			display: inline-block;
+			width: 100%;
+			background-color: #F0EFEC;
+		}
+		.card{
+			display: block;
+			overflow: hidden;
+			width: 95vw;
+			margin: 0px 8px 12px 8px;
+			box-shadow: 0px 8px 20px -4px rgba(0,0,0,0.2);
+			border-radius: 12px;
+		}
+		.bg-ready{
+			background-image: url("src/bg_ready.png");
+			background-repeat: no-repeat;
+			background-size: 100%;
+		}
+		.bg-driving{
+			background-image: url("src/bg_driving.png");
+			background-repeat: no-repeat;
+			background-size: 100%;
+		}
+		.bg-arrived{
+			background-image: url("src/bg_arrived.png");
+			background-repeat: no-repeat;
+			background-size: 100%;
+		}
+		.filler{
+			position: relative;
+		}
+		.misc-here{
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			margin-left: 12px;
+			margin-bottom: 6px;
+		}
+		.misc-weather{
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			margin-left: 8px;
+			margin-bottom: 30px;
+		}
+		.text-divider{
+			position: absolute;
+			left: 0;
+			top: 0;
+			font-size: 19pt;
+			line-height: 42pt;
+			color: #111111;
+			font-weight: bold;
+			margin-left: 22px;
+			margin-top: 46px;
+		}
+		.text-tag{
+			position: absolute;
+			left: 0;
+			top: 0;
+			font-size: 19pt;
+			line-height: 25pt;
+			color: #111111;
+			font-weight: bold;
+			margin-left: 25px;
+			margin-top: 22px;
+		}
+		.text-here{
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			font-size: 12pt;
+			color: #303030;
+			font-weight: bold;
+			margin-left: 45px;
+			margin-bottom: 12px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="filler">
+			<img class="divider" src="src/filler_ready.png">
+		</div>
+	</div>
+	<script src="readFile_mobile.js"></script>
+</body>
+</html>
