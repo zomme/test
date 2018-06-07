@@ -149,4 +149,8 @@ function putCards(){
 			document.getElementsByClassName('filler')[0].appendChild(y);
 		}
 	}
+	var z = document.createElement('img');
+	z.setAttribute('src', "src/header_"+context+".png");
+	z.classList.add('header');
+	document.getElementsByClassName('container')[0].appendChild(z);
 }
