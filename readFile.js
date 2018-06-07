@@ -111,7 +111,7 @@ function putCards(){
 			else if(pttr_hotplace.test(jsonData[i])){
 				var y = document.createElement('div');
 				var txt = document.createElement('p');
-				if(/[ready]/g.test(context)){
+				if(/ready/.test(context)){
 					txt.innerHTML = here+hotplace;
 				}
 				else{
@@ -131,7 +131,7 @@ function putCards(){
 			}
 		}
 	}
-	if(!/[arrived]/i.test(context)){
+	if(!/arrived/.test(context)){
 		var x = document.createElement('img');
 		x.classList.add('misc-here');
 		x.setAttribute('src', "src/misc_here.png");
@@ -142,7 +142,7 @@ function putCards(){
 		txt.classList.add('text-here');
 		document.getElementsByClassName('filler')[0].appendChild(txt);
 
-		if(/[ready]/i.test(context)){
+		if(/ready/.test(context)){
 			var y = document.createElement('img');
 			y.classList.add('misc-weather');
 			y.setAttribute('src', "src/misc_weather_"+weather+".png");
