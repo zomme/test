@@ -7,17 +7,21 @@ var re_dest = /{{dest}}+/g;
 var re_weather = /{{wthr}}+/g;
 var re_date = /{{date}}+/g;
 var re_context = /{{cnxt}}+/g;
+var re_dpoi = /{{dpoi}}+/g;
 var pttr_today = /divider\.today\.+/g;
 var pttr_sometimes = /divider\.sometimes\.+/g;
 var pttr_tag = /card\.place\.tag\.+/g;
 var pttr_hotplace = /card\.place\.visit\.+/g;
-var pttr_here = /.\.here\./i
-var pttr_dest = /.\.dest\./i
+var pttr_here = /.\.here\./i;
+var pttr_dest = /.\.dest\./i;
+var pttr_dest_default = /info\.arrived\.default+/i;
 var here;
 var dest;
+var dpoi;
 var weather;
 var date;
 var context;
+var dest_text = "에<br>도착했습니다.";
 var tag = "에서<br>요즘 뜨는 키워드";
 var hotplace = "의<br>핫플레이스";
 var cards=[];
@@ -53,6 +57,9 @@ function putCards(){
 		else if(re_dest.test(jsonData[i])){
 			dest = jsonData[i].replace("{{dest}}", "");
 		}
+		else if(re_dpoi.test(jsonData[i])){
+			dpoi = jsonData[i].replace("{{dpoi}}", "");
+		}
 		else if(re_weather.test(jsonData[i])){
 			weather = jsonData[i].replace("{{wthr}}", "");
 		}
@@ -65,8 +72,20 @@ function putCards(){
 		}
 		else{
 			var x = document.createElement('IMG');
+			//checked arrived card
+			if(pttr_dest_default.test(jsonData[i])){
+				var y = document.createElement('div');
+				var txt = document.createElement('p');
+				txt.innerHTML = dpoi+dest_text;
+				txt.classList.add('text-tag');
+				x.setAttribute('src', "src/"+jsonData[i]+"png");
+				x.classList.add('card');
+				y.appendChild(x);
+				y.appendChild(txt);
+				document.getElementsByClassName('container')[0].appendChild(y);
+			}
 			//check divider_today
-			if(pttr_today.test(jsonData[i])){
+			else if(pttr_today.test(jsonData[i])){
 				var y = document.createElement('div');
 				var txt = document.createElement('p');
 				if(pttr_here.test(jsonData[i])){
@@ -77,7 +96,6 @@ function putCards(){
 				}
 				txt.classList.add('text-divider');
 				x.setAttribute('src', "src/"+jsonData[i]+weather+".png");
-				x.classList.add('divider');
 				y.appendChild(x);
 				y.appendChild(txt);
 				document.getElementsByClassName('container')[0].appendChild(y);
@@ -85,7 +103,6 @@ function putCards(){
 			//check divider_sometimes
 			else if(pttr_sometimes.test(jsonData[i])){
 				x.setAttribute('src', "src/"+jsonData[i]+"png");
-				x.classList.add('divider');
 				document.getElementsByClassName('container')[0].appendChild(x);
 			}
 			//check tag
